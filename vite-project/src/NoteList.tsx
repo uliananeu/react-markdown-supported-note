@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Button, Card, Col, Form, Row, Stack } from "react-bootstrap";
+import { Badge, Button, Card, Col, Form, Row, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
 import { Tag } from "./App";
@@ -94,7 +94,7 @@ export function NoteList({ availableTabs, notes }: NoteListProps) {
   );
 }
 
-function NoteCard({ id, title, tags }: SimplifiedNote) {
+function NoteCard({ id, tags }: SimplifiedNote) {
   return (
     <Card
       as={Link}
@@ -102,9 +102,24 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
       className={`h-100 text-reset text-decoration-none ${styles.card}`}
     >
       <Card.Body>
-        {/* Render content for the NoteCard, e.g., title, tags */}
-        <h5>{title}</h5>
-        <div>Tags: {tags.map((tag) => tag.label).join(", ")}</div>
+        <Stack
+          gap={2}
+          className="align-items-center justify-content-center h-100"
+        >
+          {tags.length > 0 && (
+            <Stack
+              gap={1}
+              direction="horizontal"
+              className="justify-content-center flex-wrap"
+            >
+              {tags.map((tag) => (
+                <Badge className="taxt-truncate" key={tag.id}>
+                  {tag.label}
+                </Badge>
+              ))}
+            </Stack>
+          )}
+        </Stack>
       </Card.Body>
     </Card>
   );
