@@ -3,7 +3,7 @@ import { Badge, Button, Card, Col, Form, Row, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
 import { Tag } from "./App";
-import styles from "./NotesList.module.css";
+import styles from "./NoteList.module.css";
 
 type SimplifiedNote = {
   tags: Tag[];
