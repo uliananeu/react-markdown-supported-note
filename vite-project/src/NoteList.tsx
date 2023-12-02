@@ -60,7 +60,7 @@ export function NoteList({
 
   return (
     <>
-      <Row className="aligh-items-center mb-4">
+      <Row className="align-items-center mb-4">
         <Col>
           <h1>Notes</h1>
         </Col>
@@ -131,7 +131,7 @@ export function NoteList({
   );
 }
 
-function NoteCard({ id, tags }: SimplifiedNote) {
+function NoteCard({ id, title, tags }: SimplifiedNote) {
   return (
     <Card
       as={Link}
@@ -143,6 +143,7 @@ function NoteCard({ id, tags }: SimplifiedNote) {
           gap={2}
           className="align-items-center justify-content-center h-100"
         >
+          <span className="fs-5">{title}</span>
           {tags.length > 0 && (
             <Stack
               gap={1}
@@ -150,7 +151,7 @@ function NoteCard({ id, tags }: SimplifiedNote) {
               className="justify-content-center flex-wrap"
             >
               {tags.map((tag) => (
-                <Badge className="taxt-truncate" key={tag.id}>
+                <Badge className="text-truncate" key={tag.id}>
                   {tag.label}
                 </Badge>
               ))}
