@@ -12,11 +12,11 @@ type SimplifiedNote = {
 };
 
 type NoteListProps = {
-  availableTabs: Tag[];
+  availableTags: Tag[];
   notes: SimplifiedNote[];
 };
 
-export function NoteList({ availableTabs, notes }: NoteListProps) {
+export function NoteList({ availableTags, notes }: NoteListProps) {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [title, setTitle] = useState("");
 
@@ -67,7 +67,7 @@ export function NoteList({ availableTabs, notes }: NoteListProps) {
                 value={selectedTags.map((tag) => {
                   return { label: tag.label, value: tag.id };
                 })}
-                options={availableTabs.map((tag) => {
+                options={availableTags.map((tag) => {
                   return { label: tag.label, value: tag.id };
                 })}
                 onChange={(tags) => {

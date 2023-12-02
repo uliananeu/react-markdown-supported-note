@@ -7,6 +7,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { v4 as uuidV4 } from "uuid";
 import { NoteList } from "./NoteList";
 import { NoteLayout } from "./NoteLayout";
+import { EditNote } from "./EditNote";
 
 export type Note = {
   id: string;
@@ -55,6 +56,18 @@ function App() {
     });
   }
 
+  function onUpdateNote(id: string, { tags, ...data }: NoteData) {
+    setNotes((prevNotes) => {
+      return prevNotes.map((note) => {
+        if (note.id === id) {
+          return { ...note, ...data, tagIds: tags.map((tag) => tag.id) };
+        } else {
+          return note;
+        }
+      });
+    });
+  }
+
   function AddTag(tag: Tag) {
     setTags((prev) => [...prev, tag]);
   }
@@ -64,7 +77,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<NoteList notes={notesWithTags} availableTabs={tags} />}
+          element={<NoteList notes={notesWithTags} availableTags={tags} />}
         />
         <Route
           path="/new"
@@ -78,7 +91,16 @@ function App() {
         />
         <Route path="/:id" element={<NoteLayout notes={notesWithTags} />}>
           <Route index element={<h1>Show</h1>} />
-          <Route path="edit" element={<h1>Edit</h1>} />
+          <Route
+            path="edit"
+            element={
+              <EditNote
+                onSubmit={onUpdateNote}
+                onAddTag={AddTag}
+                availableTags={tags}
+              />
+            }
+          />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
