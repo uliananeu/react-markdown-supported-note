@@ -1,5 +1,7 @@
 # React Markdown Supported Note Taking With Categories
 
+![](https://github.com/uliananeu/react-markdown-supported-note/blob/main/vite-project/images/react-markdown-supported-note.png)
+
 ## Description
 
 Welcome to React Markdown Supported Note! This project is designed to provide a user-friendly note-taking application using React with Markdown support. Whether you're a developer jotting down code snippets or a student taking lecture notes, this application aims to make the process seamless and enjoyable.
