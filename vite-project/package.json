@@ -2,7 +2,7 @@
   "name": "vite-project",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://uliananeu.github.io/react-markdown-supported-note",
+  "homepage": "https://uliananeu.github.io/react-markdown-supported-note/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
